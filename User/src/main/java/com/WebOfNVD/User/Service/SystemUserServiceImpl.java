@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +33,6 @@ public class SystemUserServiceImpl implements SystemUserService {
 	SystemUserRepo systemUserRepo;
 
 	private JMapper<SystemUserDto, SystemUser> mapper = new JMapper<>(SystemUserDto.class, SystemUser.class);
-	private JMapper<SystemUser, CreateSystemUserRequest> cmapper = new JMapper<>(SystemUser.class,
-			CreateSystemUserRequest.class);
 
 	@Override
 	public SuccessResponse create(CreateSystemUserRequest request) {
@@ -50,7 +49,8 @@ public class SystemUserServiceImpl implements SystemUserService {
 				return new FailResponse("Ngày không đúng định dạng ! (Vui lòng nhập theo định dạng : dd/MM/yyyy)");
 			} else {
 				if (Checks.isSystemUserCode(request.getSystemUserCode())) {
-					SystemUser systemUser = cmapper.getDestination(request);
+					SystemUser systemUser = new SystemUser();
+					PropertyUtils.copyProperties(systemUser, request);
 					systemUser.setRoleOriginSystemUser(Convert.getRoleOriginSystemUser(request.getSystemUserCode()));
 					systemUserRepo.save(systemUser);
 					return new CreateUserResponse(systemUser.getSystemUserCode(),

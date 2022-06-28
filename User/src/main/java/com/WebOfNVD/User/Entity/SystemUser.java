@@ -48,7 +48,6 @@ public class SystemUser extends EntityBase implements Serializable {
 	// 02 + : Manager
 	// 03 + : Supporter
 	// .. + : khác
-	@Id
 	@Column(name = "System_User_Code", nullable = false, insertable = true)
 	@NotNull
 	@Size(min = MINSIZE_CODE, max = MAXSIZE_CODE)

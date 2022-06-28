@@ -1,0 +1,15 @@
+server:
+  port: 8799
+spring:
+  application:
+    name: UserApplication
+  datasource:
+    password: huongson1
+    url: jdbc:postgresql://localhost:5555/qlbh_user_test
+    username: Administration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
