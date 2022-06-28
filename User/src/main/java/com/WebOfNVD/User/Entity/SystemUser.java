@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,25 +14,27 @@ import com.WebOfNVD.Common.Convert.Convert;
 import com.WebOfNVD.Common.Entity.EntityBase;
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @JGlobalMap(excluded = { "MAXSIZE_CODE", "MINSIZE_CODE", "MINSIZE", "MAXSIZE", "isDelete", "userAdd", "dateAdd",
 		"modifiedUser", "modifiedAction", "modifiedDate", "MINSIZE_DESCRIPTION", "MAXSIZE_DESCRIPTION",
-		"MINSIZE_ROLE_AND_GROUP", "MINSIZE_IDENTYFY_NUMBER", "MAXSIZE_IDENTYFY_NUMBER" })
+		"MINSIZE_ROLE_AND_GROUP", "MINSIZE_IDENTYFY_NUMBER", "MAXSIZE_IDENTYFY_NUMBER", "MINSIZE_ID", "MAXSIZE_ID",
+		"serialVersionUID" })
 @Getter
 @Setter
 @Entity(name = "SystemUsers")
 @Table(name = "qlbh_system_users")
 @NoArgsConstructor
+@AllArgsConstructor
 public class SystemUser extends EntityBase implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private final static int MAXSIZE_CODE = 8;
 	private final static int MINSIZE_CODE = 8;
 	private final static int MINSIZE = 6;
@@ -48,7 +49,6 @@ public class SystemUser extends EntityBase implements Serializable {
 	// 02 + : Manager
 	// 03 + : Supporter
 	// .. + : khác
-	@Id
 	@Column(name = "System_User_Code", nullable = false, insertable = true)
 	@NotNull
 	@Size(min = MINSIZE_CODE, max = MAXSIZE_CODE)

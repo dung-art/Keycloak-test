@@ -1,6 +1,8 @@
 package com.WebOfNVD.User.Dto.SystemUser;
 
 import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,13 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class SystemUserDto {
+	private String id;
 	private Boolean isDelete;
 	private String userAdd;
 	private LocalDateTime dateAdd;
 	private LocalDateTime modifiedDate;
 	private String modifiedUser;
-	private String modifiedAction;
+//	private String modifiedAction;
 	private String systemUserCode;
 	private String fullName;
 	private String userName;
