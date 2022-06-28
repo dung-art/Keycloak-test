@@ -1,0 +1,5 @@
+package com.example.keyclock.dto;
+
+public class InfoAccess {
+
+}

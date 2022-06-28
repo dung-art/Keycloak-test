@@ -1,0 +1,14 @@
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+keycloak:
+  principal-attribute: preferred_username
+  security-constraints:
+  - authRoles:
+    - user
+    securityCollections:
+    - patterns:
+      - /customers/*
+server:
+  port: 8777
