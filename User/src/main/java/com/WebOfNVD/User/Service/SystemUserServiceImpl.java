@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +32,8 @@ public class SystemUserServiceImpl implements SystemUserService {
 	SystemUserRepo systemUserRepo;
 
 	private JMapper<SystemUserDto, SystemUser> mapper = new JMapper<>(SystemUserDto.class, SystemUser.class);
+//	private JMapper<SystemUser, CreateSystemUserRequest> cmapper = new JMapper<>(SystemUser.class,
+//			CreateSystemUserRequest.class);
 
 	@Override
 	public SuccessResponse create(CreateSystemUserRequest request) {

@@ -2,7 +2,7 @@ server:
   port: 8799
 spring:
   application:
-    name: UserApplication
+    name: securitys
   datasource:
     password: huongson1
     url: jdbc:postgresql://localhost:5555/qlbh_user_test
@@ -13,3 +13,13 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+keycloak:
+  security-constraints:
+  - auth-roles: user
+  - security-collections:
+    - patterns: /users/*
+  auth-server-url: http://localhost:8080/auth
+  realm: Dungnv
+  resource: login-app
+  public-client: true
+  principal-attribute: user-test-spring
